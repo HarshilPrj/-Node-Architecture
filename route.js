@@ -1,7 +1,8 @@
 const express = require("express");
-const parentRouter = express.Router();
+const router = express.Router();
 const pkg = require("./package.json");
+const userRoutes = require("./routers/usersRouter");
 
-parentRouter.use(`/api/v${parseInt(pkg.version)}/users`);
+router.use(`/api/v${parseInt(pkg.version)}/users`, userRoutes);
 
-module.exports = parentRouter;
+module.exports = router;
