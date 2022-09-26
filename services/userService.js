@@ -23,20 +23,20 @@ const login = async (email, password) => {
         if (checkPass === true) {
           return checkEmail;
         } else {
-          return { Erorr: "Invalid Credentials" };
+          return { message: "Invalid Password" };
         }
       }
       if (duration.asDays() > 0) {
         if (checkEmail.password === password) {
           return checkEmail;
         } else {
-          return { Erorr: "Invalid Credentials" };
+          return { message: "Invalid Password" };
         }
       } else {
-        return { Erorr: "Your Password is Expire" };
+        return { message: "Your Password is Expire" };
       }
     } else {
-      return { Erorr: "Invalid Credentials" };
+      return { message: "Invalid Email" };
     }
   } catch (error) {
     return {
