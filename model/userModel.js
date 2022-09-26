@@ -9,5 +9,14 @@ class User extends Model {
     return "id";
   }
 }
+class Contact extends Model {
+  static get tableName() {
+    return "entity.contact";
+  }
 
-module.exports = User;
+  static get idColumn() {
+    return "contact.id";
+  }
+}
+
+module.exports = { User, Contact };
