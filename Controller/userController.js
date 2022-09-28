@@ -8,7 +8,7 @@ UserController.get("/list", async (req, res) => {
 });
 
 UserController.post("/login", async (req, res) => {
-  const _userResponse = await login(req.body.email, req.body.password);
+  const _userResponse = await login(req.body);
   res.status(200).send(_userResponse);
 });
 

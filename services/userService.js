@@ -6,10 +6,10 @@ const getdata = async () => {
   return await User.query();
 };
 
-const login = async (email, password) => {
+const login = async (userBody) => {
   let checkEmail = await User.query()
-    .where("users_email", email)
-    .orWhere("user_name", email)
+    .where("users_email", userBody.email)
+    .orWhere("user_name", userBody.email)
     .first();
 
   try {
@@ -19,7 +19,10 @@ const login = async (email, password) => {
       let duration = moment.duration(moment(expiryDate).diff(loginDate));
 
       if (checkEmail.password.length === 60) {
-        let checkPass = await bcrypt.compare(password, checkEmail.password);
+        let checkPass = await bcrypt.compare(
+          userBody.password,
+          checkEmail.password
+        );
         if (checkPass === true) {
           return checkEmail;
         } else {
